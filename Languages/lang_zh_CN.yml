@@ -8,15 +8,15 @@
 # |___/ \___|_|\__,_/_/\_\___|\____/\___/|_| |_| |_|_.__/ \__,_|\__|                                         #
 #------------------------------------------------------------------------------------------------------------#
 #                                                                                                            #
-# 感谢您购买 DeluxeCombat - 为每个服务器定制的终极强力战斗插件              #
+# 感谢您购买 DeluxeCombat - 为每个服务器定制的终极强力战斗插件                                                     #
 #                                                                                                            #             
-# 这是DeluxeCombat插件的配置文件之一。                                         #
-# 在这里, 您可以配置所有的信息。如果您想改变所有的设置，请转到 config.yml         #
+# 这是DeluxeCombat插件的配置文件之一。                                                                          #
+# 在这里, 您可以配置所有的信息。如果您想改变所有的设置，请转到 config.yml                                            #
 #                                                                                                            #
-# 该插件目前支持以下版本的服务器: 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x, 1.15  #
+# 该插件目前支持以下版本的服务器: 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x, 1.15, 1.16.x             #
 #                                                                                                            #
-# 遇到了一些问题？在 spigot 上给我私信! Spigot: www.spigotmc.org/members/199727/               #
-# 如果您想获得更快速的支持， 请考虑加入我的 discord 服务器: discord.com/invite/zSkcTz3         #
+# 遇到了一些问题？在 spigot 上给我私信! Spigot: www.spigotmc.org/members/199727/                                 #
+# 如果您想获得更快速的支持， 请考虑加入我的 discord 服务器: discord.com/invite/zSkcTz3                             #
 #                                                                                                            #
 # ~ timderspieler                                                                                            #
 #                                                                                                            #
@@ -24,21 +24,23 @@
 
 ##############################################################################################################
 #                                                                                                            #
-# 要关闭当前的一条信息, 请使用 "none" 进行替换!                                              #
+# 要关闭当前的一条信息, 请使用 "none" 进行替换!                                                                   #
 #                                                                                                            #
 ##############################################################################################################
 
 ##############################################################################################################
-# 战斗记录                                                                                               #
+# 战斗记录                                                                                                    #
 ##############################################################################################################
-# 所有关于战斗记录的信息                                                                      #
+# 所有关于战斗记录的信息                                                                                        #
 ##############################################################################################################
 combat-logger:
   potion-disabled-during-combat: "&c您无法在作战中使用该药水!"
+  damage-to-from-entity: "&e您目前陷入了与 &c%entity% 的 &c作战 &e故请不要退出游戏!"
   damage-to-enemy: "&e您陷入与 &6%victim% 的 &c作战 &e请不要退出游戏。"
   damage-from-enemy: "&6%damager% &e正在攻击您，&e您陷入了 &c作战状态 &e请不要退出游戏 。"
   disabled-command: "&e当您处于作战状态时，您不能执行指令 &c%command% 。"
   leave-broadcast: "&c%player% 离开了游戏。当时他正与 %damager% 作战。"
+  leave-broadcast-entity: "&c%player% &e在与实体 &c%entity_name% 战斗的过程中离开了游戏。 &e(&c%entity%&e)!"
   items-broadcast: "&4%player% &c的物品处于: &4%world%&c, &4%x%, %y%, %z%"
   combat-expired-player: "&e您对 &c%victim% &e的作战状态已过期。"
   combat-expired: "&e您&a不再&e处于作战状态之中，现在您可以退出游戏了。"
@@ -56,6 +58,13 @@ combat-logger:
   combat-enter-subtitle: "none" #&c请不要离开服务器!
   combat-leave-title: "none" #&e&l✓
   combat-leave-subtitle: "none" #&a您现在可以离开服务器了
+  tagged-list-no-players-tagged: " &f目前没有玩家处在战斗状态。"
+  tagged-list:
+  - " "
+  - " &6&l作战玩家列表"
+  - " "
+  - " %tagged_players%"
+  - " "
 
 # 死亡告示牌
 death-sign:
@@ -82,6 +91,7 @@ death-causes:
   fire: "&c%player% &e尝试与火共舞，可惜火并不那么想"
   none: "&c%player% &e出于未知的原因死了"
   sword_kill: "&c%player% &e受到了来自 &c%killer% 的伤害 &e(&c%hearts%&e) 武器名称: &c&o%item_name%"
+  explosion_player: "&c%player% &e被 &c%killer%&e 用爆炸物炸死!"
 
 ##############################################################################################################
 # 尸体信息                                                                                                    #
@@ -179,6 +189,19 @@ bounty:
 
   bounty-list-message-entry: " &e%target%&f, 赏金: &f$%bounty%&f, 悬赏人: &e%initiator%"
   
+  bounty-list-menu-title: "悬赏列表"
+  bounty-entry-item-title: "&6&o%target%"
+  bounty-entry-item-lore: "&f赏金: &e$%bounty%=&f发起人: &e%initiator%=&f剩余时间: &e%time%"
+  
+  bounty-compass-linked: "&e您的指南针现在指向 &c%target%&e。右键以更新 / 来查看, 猎物离您多远。"
+  bounty-no-compass-in-hand: "&e您目前手上没有指南针。"
+  bounty-is-customized: "&请将一个未被定制的指南针放在手上。"
+  bounty-too-many-compass: "&e请仅放置一个指南针在您的手上。"
+  bounty-compass-cooldown: "&e您还需要等待 &c%time% &e可以更新指南针。"
+  bounty-compass-title: "&6&l悬赏目标追踪器"
+  bounty-compass-lore: "&f目标: &e%target%==&7&o右键以更新"
+  bounty-compass-update: "&e指南针已更新。 &c%target% &e据您有 &c%blocks% &e个方块距离!"
+  
   bounty-claimed-broadcast: "&e%player% &f领取到了 &e%target% &f的悬赏金额! (&e$%bounty%&f)"
   bounty-claimed: "&e您成功获得了悬赏目标 &c%target% &e的赏金! 您挣到了 &a$%bounty%&e!"
   no-bounty-on-target: "&e目前玩家 &c%target% &e身上没有悬赏!"
@@ -191,6 +214,11 @@ bounty:
   - " "
   bounty-expired-broadcast: "&f悬赏目标 &e%target% &f身上的悬赏已过期。"
   bounty-expired-initiator: "&f您为玩家 &e%target% &f设定的悬赏已过期。 已为您退回赏金 &e$%bounty% &f。"
+  
+  bounty-expired-by-initiator: "&e您支付了 &c$%amount% &e来使您的悬赏过期。"
+  
+  bounty-successfully-removed: "&e您成功移除了针对 &a%target%&e 的悬赏!"
+  
   accept-item: "&a接受"
   accept-item-lore: "&7点击以创建悬赏"
   cancel-item: "&c取消"
@@ -213,6 +241,7 @@ bounty:
   target-immune-against-bounty: "&c%target% &e拥有免于悬赏的权限! 悬赏设定已取消。"
   setup-cancelled: "&e已取消设定悬赏的操作。"
   no-bounties-active: "&c目标目前身上并未背负悬赏令。"
+  no-bounty-on-you: "&c您目前尚未被悬赏击杀!"
 
 ##############################################################################################################
 # 通用                                                                                                    #
@@ -224,7 +253,11 @@ general:
   help-message: "&7输入 &c/%cmd% help &7以获取更多信息!"
   number-between: "&e请选择一个位于 &c%min% &e和 %max% &e之间的数字!"
   not-a-number: "&c%input% &e不是一个数字!"
-
+   you-cant-do-that-world: "&e您不能在该世界里那么做!"
+  you-cant-do-that-region: "&e您不能在该区域中那么做!"
+  enabled: "&a已启用"
+  disabled: "&c已关闭"
+  
   # 为玩家提供的帮助清单
   help-list:
   - "&4&m#&c&m---------------------------------&4&m#"
@@ -260,6 +293,21 @@ general:
   killer-drops-are-unlocked: "&e您的掉落物将不再被保护，现在任何人都能将它们捡起!"
   victim-drops-unlocked-notification: "&e您所击杀玩家的掉落物已过保护时间，您可以在 &c%x%&e, &c%y%&e, &c%z% &e拾取它们"
 
+  # PvP Interval
+  interval-ended-msg: "&ePVP 开启区段已过。 PvP 状态 %status% &e从 &c%from% &e更改为 &c%to%&e!"
+  interval-started-msg: "&ePvP 开启区段已到! PvP 状态 %status% &e从 &a%from% &e开启至 &a%to%&e!"
+  pvp-enabled-title: "&aPvP 现在已启用!"
+  pvp-enabled-subtitle: "&7您现在可以攻击别人!"
+  pvp-disabled-title: "&cPvP 现在已禁用!"
+  pvp-disabled-subtitle: "&7您不能再同别人战斗!"
+  interval-toggle-not-allowed: "&e您不能在此世界切换PVP。"
+  pvp-enabled-wrldgrd-info: "&ePvP 在此世界强制开启。但您似乎处在 &c非-pvp &e区域!"
+  
+  # Blacklisted Enchantment
+  blacklisted-enchantment-title: "&c&l!警告!"
+  blacklisted-enchantment-subtitle: "&e您的物品包含附魔黑名单!"
+  blacklisted-enchantment-msg: "&e您手中物品有 &c黑名单的附魔 &e于其上。您现在不能使用他!"
+  
   # 数据追踪计数器
   stattrak:
 
@@ -375,6 +423,29 @@ general:
   pvp-still-disabled: "&e您的PVP状态处于 &c关闭 &e状态! 通过指令 &c/togglepvp &e启用您的PVP。"
   player-has-pvp-disabled: "&e您 &c不能 &e攻击这个玩家, 因为他关闭了PVP!"
   pvp-toggle-cmd-disabled-in-this-world: "&c您不能在该世界使用该指令!"
+  pvp-toggle-no-players-found: "&f没有玩家将他们的PVP %filter%&r&f!"
+  pvp-toggle-list:
+  - " "
+  - " &6&lPvP 状态 &r&f(筛选器: %filter%&r&f)"
+  - " "
+  - " %players_status%"
+  - " "
+  pvp-toggle-confirmation-needed: "&e使用 &c/togglepvp confirm &e来确认您想要切换 PVP 状态。使用 &c/togglepvp deny &e来取消。您有 &c%time% &e来进行选择。"
+  pvp-toggle-confirmation-information:
+  - " "
+  - " &6&lPvP 切换状态确认"
+  - " &f您现在正尝试打开 PvP!"
+  - " "
+  - " &f- 其他玩家将能够击杀您"
+  - " &f- 您将失去您的物品"
+  - " &f- 服务器不会返还您任何物品"
+  - " "
+  pvp-toggle-confirmation-title: "&c&l警告!"
+  pvp-toggle-confirmation-subtitle: "&f请二次确认您是否想切换 PvP 状态!"
+  pvp-toggle-confirmation-expired: "&ePVP 切换确认已过期。"
+  pvp-toggle-confirmation-nothing-to-confirm: "&e您没有需要确认的东西。"
+  pvp-toggle-confirmation-denied: "&e您 &c拒绝 &e了 PVP 切换的确认请求。您的PVP状态仍然 &c关闭&e。"
+  
   
   # 火焰 / 岩浆 防护信息
   lava-fire-not-allowed: "&e您不能放置 &c%type% &e在这个玩家附近，因为他处于保护状态或PVP关闭状态。"
@@ -383,6 +454,8 @@ general:
 
   # 时间格式信息
   time:
+    days: "天"
+    day: "天"
     hours: "时"
     hour: "小时"
     minutes: "分"
@@ -419,13 +492,14 @@ general:
       吸收: &c%damage_taken%"
     killer: "&e杀手: &6%killer%"
     killer-lore: "&7这个玩家击杀了 &c%victim%= =&e吸收伤害: &c%damage_taken%=&e血量
-      left: &d%hearts_left%=&e造成伤害: &c%damage_dealt%"
+      剩余: &d%hearts_left%=&e造成伤害: &c%damage_dealt%"
     potioneffects: "&d药水效果"
     potioneffects-lore: "&7被攻击方所受的=&7这些药水效果: %potioneffects%"
     potioneffect-lore: "&e- &5%potiontype%"
     assistants: "&b助攻"
     assistants-lore: "&7这些玩家曾帮助=&7杀手: %assistants%"
     assistant-lore: "&e- &b%assistant_name%&e, &a↑ %damage_dealt%&e, &c↓ %damage_taken%"
+    
     fists: "拳头"
 
 ##############################################################################################################
